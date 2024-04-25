@@ -13,7 +13,10 @@ executors:
     machine:
       image: ubuntu-2204:2022.07.1
     resource_class: arm.large
-
+  ppc64le:
+    machine:
+      image: ubuntu-2204:2022.07.1
+    resource_class: ppc.large
 jobs:
   push-multi-arch:
     machine:
@@ -72,7 +75,7 @@ workflows:
       - build-only:
           matrix:
             parameters:
-              architecture: [amd64, arm64]
+              architecture: [amd64, arm64, ppc64le]
           filters:
             branches:
               ignore:
@@ -83,7 +86,7 @@ workflows:
       - build-and-push:
           matrix:
             parameters:
-              architecture: [amd64, arm64]
+              architecture: [amd64, arm64, ppc64le]
           filters:
             branches:
               only:
@@ -110,7 +113,7 @@ workflows:
       - build-and-push:
           matrix:
             parameters:
-              architecture: [amd64, arm64]
+              architecture: [amd64, arm64, ppc64le]
           # Run only on these branches (each pushing different images)
           filters:
             branches:
