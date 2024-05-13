@@ -16,7 +16,7 @@ executors:
   ppc64le:
     machine:
       image: ubuntu-2204:2022.07.1
-    resource_class: ppc.large
+    resource_class: pooja0805/ppclarge
 jobs:
   push-multi-arch:
     machine:
